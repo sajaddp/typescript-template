@@ -1,3 +1,6 @@
 import "dotenv/config";
 
-console.log(process.env.MY_SECRET);
+(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log(process.env.MY_SECRET);
+})();
