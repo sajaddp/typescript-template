@@ -2,18 +2,7 @@
   "name": "typescript-template",
   "version": "1.0.0",
   "description": "This is a template repository for starting a new TypeScript project.",
-  "main": "index.js",
-  "dependencies": {
-    "dotenv": "^16.5.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.15.24",
-    "eslint": "^9.27.0",
-    "prettier": "^3.5.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.33.0"
-  },
+  "main": "ts-node ./src/index.ts",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node ./src/index.ts",
@@ -29,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/sajaddp/typescript-template/issues"
   },
-  "homepage": "https://github.com/sajaddp/typescript-template#readme"
+  "homepage": "https://github.com/sajaddp/typescript-template#readme",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "eslint": "^9.34.0",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.40.0"
+  }
 }
