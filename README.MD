@@ -1,53 +1,94 @@
 # TypeScript Template
 
-This is a template repository for starting a new TypeScript project.
+A modern, minimal template for starting TypeScript projects on Node.js with sensible defaults and a smooth developer experience.
 
-## Getting Started
+## Features
 
-### Prerequisites
+- TypeScript 5 with strict mode and Node LTS (22) aligned config
+- Fast iteration using `ts-node` for development
+- ESLint (typescript-eslint) and Prettier for consistent, high‑quality code
+- Environment variables via `dotenv`
+- Dependency management with `pnpm`
 
-- [Node.js](https://nodejs.org/)
-- [pnpm](https://pnpm.io/)
+## Prerequisites
 
-### Installation
+- Node.js 20 or 22+ (LTS recommended)
+- pnpm 10+
 
-1. Clone the repository:
+## Quick Start
 
-    ```sh
-    git clone https://github.com/your-username/typescript-template.git
-    cd typescript-template
-    ```
-
-2. Install dependencies using pnpm:
-
-    ```sh
-    pnpm i
-    ```
-
-### Running the Project
-
-To run the project, use the following command:
+- Clone and install dependencies:
 
 ```sh
-ts-node ./src/index.ts
+git clone https://github.com/sajaddp/typescript-template.git
+cd typescript-template
+pnpm i
 ```
 
-### Development
+- Configure environment variables:
 
-To start the development server, run:
+- Create a `.env` file in the project root (if it doesn’t exist) and set:
+
+```env
+MY_SECRET="your-secret-value"
+```
+
+- Run in development mode:
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
-### Code Formatting
+The app logs the value of `MY_SECRET` to the console.
 
-To format the code using Prettier, run:
+## Scripts
 
-```sh
-npm run prettier
+- `pnpm dev`: Run the app with `ts-node` from `src/index.ts`.
+- `pnpm build`: Compile TypeScript with `tsc`.
+- `pnpm prettier`: Format code in `src` using Prettier.
+
+Note: After `pnpm build`, JavaScript output is emitted alongside the `.ts` files by default. You can set `outDir` in `tsconfig.json` (e.g., `dist`) and then run `node dist/index.js`.
+
+## Project Structure
+
+```txt
+.
+├── src/
+│   └── index.ts          # Entry point (example: reading an env variable)
+├── eslint.config.mjs     # ESLint configuration with typescript-eslint
+├── tsconfig.json         # TypeScript configuration aligned with Node 22
+├── package.json          # Scripts and dependencies
+├── .env                  # Local environment variables
+└── README.MD
 ```
+
+## Code Quality
+
+- ESLint: Lint TypeScript/JS code
+
+  ```sh
+  pnpm exec eslint . --ext .ts
+  ```
+
+- Prettier: Enforce consistent formatting
+
+  ```sh
+  pnpm prettier
+  ```
+
+## TypeScript Settings
+
+- Target: `es2023`
+- Module/Resolution: `node16`
+- Enabled: `strict: true`, `esModuleInterop: true`, `resolveJsonModule: true`
+
+To emit compiled files into a separate directory, enable `outDir` in `tsconfig.json`.
+
+## Troubleshooting
+
+- Missing env value: Ensure `.env` exists and `MY_SECRET` is defined, then run with `pnpm dev`.
+- Where is the build output? Without `outDir`, `.js` files are emitted next to `.ts`. Either run `node src/index.js` or configure `outDir` (e.g., `dist`) and run `node dist/index.js`.
 
 ## License
 
-This project is licensed under the MIT License.
+Released under the MIT License.
