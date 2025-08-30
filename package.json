@@ -13,13 +13,22 @@
     "url": "git+https://github.com/sajaddp/typescript-template.git"
   },
   "keywords": [
-    "typescript",
-    "template",
-    "starter",
     "boilerplate",
-    "ts-node",
+    "dotenv",
+    "eslint",
+    "node-22",
+    "node-typescript-starter",
+    "node",
     "nodejs",
-    "project"
+    "pnpm",
+    "prettier",
+    "project",
+    "starter",
+    "template",
+    "ts-node",
+    "typescript-starter",
+    "typescript-template",
+    "typescript"
   ],
   "author": "Sajad DP",
   "license": "MIT",
@@ -38,5 +47,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.41.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
   }
 }
