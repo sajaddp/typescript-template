@@ -1,7 +1,7 @@
 {
   "name": "typescript-template",
   "version": "1.0.0",
-  "description": "This is a template repository for starting a new TypeScript project.",
+  "description": "A template project setup for TypeScript development.",
   "main": "ts-node ./src/index.ts",
   "scripts": {
     "build": "tsc",
@@ -12,13 +12,22 @@
     "type": "git",
     "url": "git+https://github.com/sajaddp/typescript-template.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "template",
+    "starter",
+    "boilerplate",
+    "ts-node",
+    "nodejs",
+    "project"
+  ],
+  "author": "Sajad DP",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sajaddp/typescript-template/issues"
   },
   "homepage": "https://github.com/sajaddp/typescript-template#readme",
+  "packageManager": "pnpm@10.15.0",
   "dependencies": {
     "dotenv": "^17.2.1"
   },
