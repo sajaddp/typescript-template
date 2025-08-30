@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "TypeScript Template"
+message: "If you use this template, please cite it as below."
+type: software
+authors:
+  - family-names: Dehshiri
+    given-names: Sajad
+repository-code: "https://github.com/sajaddp/typescript-template"
+url: "https://sajaddp.github.io/typescript-template/"
+license: MIT
+version: "1.0.0"
+keywords:
+  - typescript
+  - typescript-template
+  - node
+  - node-22
+  - pnpm
+  - ts-node
+  - dotenv
+  - eslint
+  - prettier
+date-released: "2025-08-30"
