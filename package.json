@@ -4,7 +4,10 @@
   "description": "A template project setup for TypeScript development.",
   "main": "ts-node ./src/index.ts",
   "scripts": {
-    "dev": "ts-node ./src/index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "format": "biome format --write .",
+    "lint": "biome check --write .",
+    "lint:unsafe": "biome check --write --unsafe ."
   },
   "repository": {
     "type": "git",
@@ -13,13 +16,11 @@
   "keywords": [
     "boilerplate",
     "dotenv",
-    "eslint",
     "node-22",
     "node-typescript-starter",
     "node",
     "nodejs",
     "pnpm",
-    "prettier",
     "project",
     "starter",
     "template",
@@ -39,10 +40,10 @@
     "dotenv": "^17.2.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
     "@types/node": "^24.5.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.44.0"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=20.0.0",

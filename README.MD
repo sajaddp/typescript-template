@@ -6,7 +6,7 @@ A modern, minimal template for starting TypeScript projects on Node.js with sens
 
 - TypeScript 5 with strict mode and Node LTS (22) aligned config
 - Fast iteration using `ts-node` for development
-- ESLint (typescript-eslint) and Prettier for consistent, high‑quality code
+- Biome (formatter + linter) for consistent, high-quality code
 - Environment variables via `dotenv`
 - Dependency management with `pnpm`
 
@@ -45,7 +45,9 @@ The app logs the value of `MY_SECRET` to the console.
 
 - `pnpm dev`: Run the app with `ts-node` from `src/index.ts`.
 - `pnpm build`: Compile TypeScript with `tsc`.
-- `pnpm prettier`: Format code in `src` using Prettier.
+- `pnpm format`: Format codebase with Biome's formatter.
+- `pnpm lint`: Run Biome in safe mode (formats and sorts imports).
+- `pnpm lint:unsafe`: Run Biome with unsafe fixes (also removes unused imports).
 
 Note: After `pnpm build`, JavaScript output is emitted alongside the `.ts` files by default. You can set `outDir` in `tsconfig.json` (e.g., `dist`) and then run `node dist/index.js`.
 
@@ -55,7 +57,7 @@ Note: After `pnpm build`, JavaScript output is emitted alongside the `.ts` files
 .
 ├── src/
 │   └── index.ts          # Entry point (example: reading an env variable)
-├── eslint.config.mjs     # ESLint configuration with typescript-eslint
+├── biome.json            # Biome configuration for formatting and lint checks
 ├── tsconfig.json         # TypeScript configuration aligned with Node 22
 ├── package.json          # Scripts and dependencies
 ├── .env                  # Local environment variables
@@ -64,16 +66,22 @@ Note: After `pnpm build`, JavaScript output is emitted alongside the `.ts` files
 
 ## Code Quality
 
-- ESLint: Lint TypeScript/JS code
+- Biome (safe): Format and sort imports
 
   ```sh
-  pnpm exec eslint . --ext .ts
+  pnpm lint
   ```
 
-- Prettier: Enforce consistent formatting
+- Biome (unsafe): Apply safe fixes and remove unused imports
 
   ```sh
-  pnpm prettier
+  pnpm lint:unsafe
+  ```
+
+- Formatter-only:
+
+  ```sh
+  pnpm format
   ```
 
 ## TypeScript Settings

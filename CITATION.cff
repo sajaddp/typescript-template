@@ -17,6 +17,5 @@ keywords:
   - pnpm
   - ts-node
   - dotenv
-  - eslint
-  - prettier
+  - biome
 date-released: "2025-08-30"
