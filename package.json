@@ -1,6 +1,6 @@
 {
-  "name": "typescript-template",
-  "version": "2.0.0",
+  "name": "@sajaddp/typescript-template",
+  "version": "2.1.0",
   "description": "A polished TypeScript CLI starter for Node.js 24+, pnpm 11+, Commander.js, typed env validation, and Vitest.",
   "type": "module",
   "main": "./dist/index.js",
@@ -21,6 +21,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsx src/cli.ts",
     "build": "tsc",
@@ -30,7 +33,11 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "lint": "biome check .",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test"
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test",
+    "smoke:dist": "node dist/cli.js --help && node dist/cli.js hello Sajad && node dist/cli.js env --json && node dist/cli.js doctor --json",
+    "pack:dry": "pnpm build && npm pack --dry-run",
+    "prepack": "pnpm build",
+    "prepublishOnly": "pnpm check && pnpm build && pnpm smoke:dist"
   },
   "repository": {
     "type": "git",
