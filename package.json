@@ -1,12 +1,12 @@
 {
   "name": "@sajaddp/typescript-template",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A polished TypeScript CLI starter for Node.js 24+, pnpm 11+, Commander.js, typed env validation, and Vitest.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "ts-template": "./dist/cli.js"
+    "ts-template": "dist/cli.js"
   },
   "exports": {
     ".": {
