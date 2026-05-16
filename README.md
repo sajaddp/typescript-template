@@ -169,24 +169,6 @@ pnpm lint
 pnpm format
 ```
 
-Run tests in watch mode:
-
-```sh
-pnpm test:watch
-```
-
-Apply Biome fixes:
-
-```sh
-pnpm lint:fix
-```
-
-Apply unsafe Biome fixes only when you have reviewed the diff:
-
-```sh
-pnpm lint:unsafe
-```
-
 ## Testing
 
 This starter uses Vitest for fast TypeScript tests. The current test suite covers:
