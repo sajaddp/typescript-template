@@ -22,12 +22,15 @@ Do not turn this project into a web app, framework template, or broad boilerplat
 - `src/commands/`: individual command handlers.
 - `src/config/env.ts`: zod-based environment validation.
 - `src/lib/`: shared CLI context and output helpers.
+- `scripts/`: build, cleanup, and npm package validation helpers.
 - `tests/cli.test.ts`: Vitest coverage for env parsing, routing, JSON output, and failure paths.
 - `.github/workflows/ci.yml`: GitHub Actions workflow for install, checks, and build.
 - `.github/workflows/publish.yml`: npm Trusted Publishing workflow triggered by published GitHub Releases.
 - `.node-version`: Node.js version used by local tools and CI.
 - `.editorconfig`: editor defaults for consistent whitespace and newlines.
 - `README.md`: public user-facing documentation.
+- `CONTRIBUTING.md`: contributor workflow and repository rules.
+- `docs/development.md`: local development workflow and quality gates.
 - `CHANGELOG.md`: release notes and notable changes.
 - `pnpm-workspace.yaml`: pnpm 11 build-script allowlist; keep `esbuild: true` unless tooling changes.
 - `.codex/skills/work-on-typescript-cli-starter/SKILL.md`: deeper project-specific Codex workflow.
@@ -44,6 +47,7 @@ Do not turn this project into a web app, framework template, or broad boilerplat
 - Do not stage or commit generated `dist/` output unless the user explicitly asks.
 - Keep `.env` untracked; keep `.env.example` tracked.
 - Keep `pnpm-lock.yaml` tracked.
+- Keep `pnpm verify` as the local quality gate when changing scripts, package metadata, build output, or public docs.
 
 ## Publishing Rules
 
@@ -85,17 +89,22 @@ Run targeted checks while working. For substantial changes, run:
 
 ```sh
 pnpm check
+pnpm fix
 pnpm lint
 pnpm typecheck
+pnpm typecheck:watch
 pnpm test
+pnpm test:watch
 pnpm build
 node dist/cli.js --help
 node dist/cli.js hello
 node dist/cli.js env --json
 node dist/cli.js doctor --json
 pnpm smoke:dist
+pnpm pack:check
 npm pack --dry-run
 pnpm pack:dry
+pnpm verify
 ```
 
 For a doctor check that simulates pnpm 11 metadata:
