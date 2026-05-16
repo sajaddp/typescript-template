@@ -7,7 +7,7 @@ Use this guide when working on this repository with Codex or any other AI coding
 This repository is a lightweight TypeScript CLI starter for Node.js 24+ and pnpm 11+.
 
 - Public CLI name: `ts-template`
-- Package name: `typescript-template`
+- Package name: `@sajaddp/typescript-template`
 - Runtime: Node.js 24+
 - Package manager: pnpm 11+
 - Module system: ESM with TypeScript `NodeNext`
@@ -24,6 +24,7 @@ Do not turn this project into a web app, framework template, or broad boilerplat
 - `src/lib/`: shared CLI context and output helpers.
 - `tests/cli.test.ts`: Vitest coverage for env parsing, routing, JSON output, and failure paths.
 - `.github/workflows/ci.yml`: GitHub Actions workflow for install, checks, and build.
+- `.github/workflows/publish.yml`: npm Trusted Publishing workflow triggered by published GitHub Releases.
 - `.node-version`: Node.js version used by local tools and CI.
 - `.editorconfig`: editor defaults for consistent whitespace and newlines.
 - `README.md`: public user-facing documentation.
@@ -43,6 +44,15 @@ Do not turn this project into a web app, framework template, or broad boilerplat
 - Do not stage or commit generated `dist/` output unless the user explicitly asks.
 - Keep `.env` untracked; keep `.env.example` tracked.
 - Keep `pnpm-lock.yaml` tracked.
+
+## Publishing Rules
+
+- `.github/workflows/publish.yml` is the only publish workflow.
+- Publishing uses npm Trusted Publishing with GitHub Actions OIDC.
+- Never add `NPM_TOKEN` or long-lived npm tokens to this repository.
+- Do not run `npm publish` unless the user explicitly instructs it in a future task.
+- Keep package docs aligned across `package.json`, `CHANGELOG.md`, `README.md`, and `docs/release.md`.
+- The prepared release version for this task is `2.1.0`.
 
 ## Common Change Workflow
 
@@ -83,7 +93,9 @@ node dist/cli.js --help
 node dist/cli.js hello
 node dist/cli.js env --json
 node dist/cli.js doctor --json
-pnpm pack --dry-run
+pnpm smoke:dist
+npm pack --dry-run
+pnpm pack:dry
 ```
 
 For a doctor check that simulates pnpm 11 metadata:
