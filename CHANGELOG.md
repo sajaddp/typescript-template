@@ -52,7 +52,7 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 - Added `@clack/prompts` and `picocolors` for improved terminal presentation.
 - Added `vitest` for automated testing.
 - Added package metadata for ESM output, public exports, generated types, and the `ts-template` bin.
-- Added scripts for `dev`, `build`, `postbuild`, `start`, `typecheck`, `test`, `test:watch`, `lint`, `lint:fix`, `lint:unsafe`, and `format`.
+- Added a focused script set for `dev`, `build`, `postbuild`, `typecheck`, `test`, `lint`, and `format`.
 - Added `scripts/mark-bin-executable.mjs` so the compiled CLI bin is executable after builds.
 
 ### TypeScript and Build Output
