@@ -10,6 +10,7 @@ description: Project-specific workflow for maintaining the sajaddp/typescript-te
 Treat this repository as a lightweight, opinionated TypeScript CLI starter, not a web app or framework template.
 
 - Public CLI name: `ts-template`
+- Package name: `@sajaddp/typescript-template`
 - Runtime baseline: Node.js 24+ and pnpm 11+
 - Module format: ESM with `NodeNext`
 - Source root: `src`
@@ -80,7 +81,9 @@ node dist/cli.js --help
 node dist/cli.js hello
 node dist/cli.js env --json
 node dist/cli.js doctor --json
-pnpm pack --dry-run
+pnpm smoke:dist
+npm pack --dry-run
+pnpm pack:dry
 ```
 
 For doctor checks that need a pnpm 11 user agent, use:
@@ -96,3 +99,10 @@ npm_config_user_agent='pnpm/11.1.2 npm/? node/v24.0.0' node dist/cli.js doctor -
 - `pnpm-workspace.yaml` must stay tracked because it allows the trusted `esbuild` install script required by the toolchain.
 - `dist/` is generated and ignored; do not stage build output unless the user explicitly asks.
 - Preserve user changes in the worktree; never reset or revert unrelated edits.
+
+## Publishing Rules
+
+- `.github/workflows/publish.yml` is the only publish workflow.
+- Publishing uses npm Trusted Publishing with GitHub Actions OIDC.
+- Never add `NPM_TOKEN` or long-lived npm tokens to this repository.
+- Do not run `npm publish` unless the user explicitly asks for it in a future task.
