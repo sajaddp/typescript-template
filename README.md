@@ -145,7 +145,9 @@ Environment validation lives in `src/config/env.ts`. The schema is intentionally
 │   ├── config/             # Typed environment validation
 │   └── lib/                # Shared CLI context and output helpers
 ├── .github/
-│   └── workflows/ci.yml    # CI workflow for lint, format, typecheck, test, build
+│   └── workflows/          # CI and npm Trusted Publishing workflows
+├── docs/
+│   └── release.md          # npm Trusted Publishing release guide
 ├── tests/
 │   └── cli.test.ts         # Vitest coverage for env, routing, JSON, failures
 ├── scripts/
@@ -226,7 +228,7 @@ ts-template doctor
 Unlink when finished:
 
 ```sh
-pnpm unlink --global typescript-template
+pnpm unlink --global @sajaddp/typescript-template
 ```
 
 ## Customization Guide
@@ -376,22 +378,30 @@ Do not print secrets in human-readable output or JSON output unless that is the 
 
 ## Release Checklist
 
+Target release version: `2.1.0`.
+
 Before publishing or tagging a release:
 
 ```sh
 pnpm check
 pnpm build
-node dist/cli.js --help
-node dist/cli.js hello
-node dist/cli.js env --json
-node dist/cli.js doctor --json
+pnpm smoke:dist
+npm pack --dry-run
 ```
 
-For npm publishing, confirm the package contents:
+The `pack:dry` script also builds and inspects the npm package:
 
 ```sh
-pnpm pack --dry-run
+pnpm pack:dry
 ```
+
+## Publishing
+
+The selected npm package name is `@sajaddp/typescript-template`. The package keeps the installed CLI binary name as `ts-template`.
+
+Automated publishing is prepared through GitHub Releases and npm Trusted Publishing with GitHub Actions OIDC. No `NPM_TOKEN` is required, and no long-lived npm token should be added to GitHub Secrets.
+
+Publishing is handled by `.github/workflows/publish.yml` after the npm Trusted Publisher is configured on npmjs.com. See `docs/release.md` for the full release steps for version `2.1.0`.
 
 ## Troubleshooting
 
