@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work on TypeScript CLI Starter"
+  short_description: "Maintain the ts-template CLI starter"
+  default_prompt: "Use $work-on-typescript-cli-starter to maintain the ts-template TypeScript CLI starter."
