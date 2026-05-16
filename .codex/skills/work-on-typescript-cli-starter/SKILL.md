@@ -21,6 +21,10 @@ Treat this repository as a lightweight, opinionated TypeScript CLI starter, not 
   - `src/commands/` contains command handlers.
   - `src/config/env.ts` owns typed env validation.
   - `src/lib/` contains shared CLI context and output helpers.
+- Developer workflow docs:
+  - `CONTRIBUTING.md` covers repository contribution rules.
+  - `docs/development.md` covers local commands and quality gates.
+  - `docs/release.md` covers npm Trusted Publishing setup.
 
 ## Working Rules
 
@@ -73,17 +77,22 @@ Run the narrowest relevant checks during iteration, then run the full set before
 
 ```sh
 pnpm check
+pnpm fix
 pnpm lint
 pnpm typecheck
+pnpm typecheck:watch
 pnpm test
+pnpm test:watch
 pnpm build
 node dist/cli.js --help
 node dist/cli.js hello
 node dist/cli.js env --json
 node dist/cli.js doctor --json
 pnpm smoke:dist
+pnpm pack:check
 npm pack --dry-run
 pnpm pack:dry
+pnpm verify
 ```
 
 For doctor checks that need a pnpm 11 user agent, use:
