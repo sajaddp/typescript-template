@@ -15,6 +15,8 @@ Use this repo when you want a practical Node.js CLI template that is still easy 
 - Fast local development with `tsx`
 - Vitest unit tests for command behavior and error paths
 - Biome for formatting, linting, and import organization
+- Watch-mode scripts for tests and typechecking
+- One-command local verification with npm package content checks
 - Clean `dist` build with declarations and source maps
 
 ## Requirements
@@ -147,16 +149,22 @@ Environment validation lives in `src/config/env.ts`. The schema is intentionally
 ├── .github/
 │   └── workflows/          # CI and npm Trusted Publishing workflows
 ├── docs/
+│   ├── development.md     # Local development workflow and quality gates
 │   └── release.md          # npm Trusted Publishing release guide
 ├── tests/
 │   └── cli.test.ts         # Vitest coverage for env, routing, JSON, failures
 ├── scripts/
+│   ├── check-package.mjs
+│   │                      # Validates npm dry-run package contents
+│   ├── clean.mjs
+│   │                      # Removes generated local artifacts
 │   └── mark-bin-executable.mjs
 │                          # Marks the compiled bin as executable after build
 ├── .editorconfig           # Shared editor formatting defaults
 ├── .env.example            # Safe public env example
 ├── .node-version           # Node.js major version for local tools and CI
 ├── biome.json              # Formatter and linter config
+├── CONTRIBUTING.md         # Contributor workflow and repository rules
 ├── package.json            # Scripts, dependencies, bin, and package metadata
 ├── pnpm-lock.yaml          # Locked dependency graph
 ├── pnpm-workspace.yaml     # pnpm build-script policy for trusted tooling
@@ -168,13 +176,23 @@ Environment validation lives in `src/config/env.ts`. The schema is intentionally
 Use these commands during day-to-day development:
 
 ```sh
-pnpm dev -- --help
+pnpm dev:help
+pnpm dev:hello
+pnpm test:watch
+pnpm typecheck:watch
+pnpm fix
 pnpm check
-pnpm typecheck
-pnpm test
-pnpm lint
-pnpm format
 ```
+
+Run the full local quality gate before a pull request or release:
+
+```sh
+pnpm verify
+```
+
+`pnpm verify` runs formatting checks, linting, typechecking, tests, a fresh build, compiled CLI smoke tests, and npm package content checks.
+
+See `docs/development.md` for the full development workflow.
 
 ## Testing
 
@@ -383,15 +401,13 @@ Target release version: `2.1.0`.
 Before publishing or tagging a release:
 
 ```sh
-pnpm check
-pnpm build
-pnpm smoke:dist
-npm pack --dry-run
+pnpm verify
 ```
 
-The `pack:dry` script also builds and inspects the npm package:
+Use these package-specific checks when changing package metadata or build output:
 
 ```sh
+pnpm pack:check
 pnpm pack:dry
 ```
 
