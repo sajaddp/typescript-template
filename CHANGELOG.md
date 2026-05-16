@@ -1,5 +1,36 @@
 # Changelog
 
+## 2.1.0 - 2026-05-16
+
+This update prepares the package for secure npm publishing through GitHub Actions Trusted Publishing. It does not publish the package, create a GitHub Release, or create a git tag.
+
+### Publishing Preparation
+
+- Set the next package version to `2.1.0`.
+- Selected the scoped npm package name `@sajaddp/typescript-template` after confirming the scoped package was not present on npm.
+- Kept the installed CLI binary name as `ts-template`.
+- Added `publishConfig.access: public` for public scoped package publishing.
+- Added `.github/workflows/publish.yml` for npm Trusted Publishing through GitHub Actions OIDC.
+- Configured the publish workflow to run only when a GitHub Release is published.
+- Granted the publish workflow `id-token: write` and `contents: read` without adding `NPM_TOKEN` or long-lived npm secrets.
+- Disabled package-manager caching in the publish workflow with a supported `actions/setup-node` input.
+
+### Release Safety
+
+- Added `smoke:dist` to validate the compiled CLI after building.
+- Added `pack:dry` to build and inspect the npm package tarball.
+- Added `prepack` so npm package inspection and packaging build fresh `dist` output.
+- Added `prepublishOnly` so manual npm publishing must pass checks, build, and compiled CLI smoke tests.
+- Updated CI to run `pnpm smoke:dist` after `pnpm build`.
+- Aligned GitHub Actions Node setup on `actions/setup-node@v6`.
+
+### Documentation
+
+- Added `docs/release.md` with the manual npm Trusted Publisher setup values for npmjs.com.
+- Updated README release and publishing guidance for the `2.1.0` target release.
+- Updated `AGENTS.md` with publishing rules to prevent future token-based publishing regressions.
+- Kept package contents focused on generated `dist` files, public metadata, documentation, license text, changelog, and `.env.example`.
+
 ## 2.0.0 - 2026-05-16
 
 This update rewrites the project from a minimal TypeScript runtime example into a polished Node.js CLI starter. The repository now presents a real `ts-template` command, a cleaner source architecture, typed environment validation, automated tests, production build output, and a comprehensive README designed for both developer onboarding and search visibility.
