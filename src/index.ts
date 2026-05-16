@@ -12,7 +12,7 @@ export { runHelloCommand } from "./commands/hello.js";
 export { type AppEnv, loadEnv, logLevels } from "./config/env.js";
 
 export const CLI_NAME = "ts-template";
-export const CLI_VERSION = "1.0.0";
+export const CLI_VERSION = "2.0.0";
 
 type JsonOption = {
   json?: boolean;

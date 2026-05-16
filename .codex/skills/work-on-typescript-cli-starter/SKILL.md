@@ -71,6 +71,7 @@ Treat this repository as a lightweight, opinionated TypeScript CLI starter, not 
 Run the narrowest relevant checks during iteration, then run the full set before finishing substantial changes:
 
 ```sh
+pnpm check
 pnpm lint
 pnpm typecheck
 pnpm test

@@ -23,6 +23,9 @@ Do not turn this project into a web app, framework template, or broad boilerplat
 - `src/config/env.ts`: zod-based environment validation.
 - `src/lib/`: shared CLI context and output helpers.
 - `tests/cli.test.ts`: Vitest coverage for env parsing, routing, JSON output, and failure paths.
+- `.github/workflows/ci.yml`: GitHub Actions workflow for install, checks, and build.
+- `.node-version`: Node.js version used by local tools and CI.
+- `.editorconfig`: editor defaults for consistent whitespace and newlines.
 - `README.md`: public user-facing documentation.
 - `CHANGELOG.md`: release notes and notable changes.
 - `pnpm-workspace.yaml`: pnpm 11 build-script allowlist; keep `esbuild: true` unless tooling changes.
@@ -71,6 +74,7 @@ When changing runtime/tooling requirements:
 Run targeted checks while working. For substantial changes, run:
 
 ```sh
+pnpm check
 pnpm lint
 pnpm typecheck
 pnpm test

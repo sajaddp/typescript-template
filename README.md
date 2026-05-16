@@ -144,12 +144,16 @@ Environment validation lives in `src/config/env.ts`. The schema is intentionally
 │   ├── commands/           # Individual CLI command handlers
 │   ├── config/             # Typed environment validation
 │   └── lib/                # Shared CLI context and output helpers
+├── .github/
+│   └── workflows/ci.yml    # CI workflow for lint, format, typecheck, test, build
 ├── tests/
 │   └── cli.test.ts         # Vitest coverage for env, routing, JSON, failures
 ├── scripts/
 │   └── mark-bin-executable.mjs
 │                          # Marks the compiled bin as executable after build
+├── .editorconfig           # Shared editor formatting defaults
 ├── .env.example            # Safe public env example
+├── .node-version           # Node.js major version for local tools and CI
 ├── biome.json              # Formatter and linter config
 ├── package.json            # Scripts, dependencies, bin, and package metadata
 ├── pnpm-lock.yaml          # Locked dependency graph
@@ -163,6 +167,7 @@ Use these commands during day-to-day development:
 
 ```sh
 pnpm dev -- --help
+pnpm check
 pnpm typecheck
 pnpm test
 pnpm lint
@@ -374,9 +379,7 @@ Do not print secrets in human-readable output or JSON output unless that is the 
 Before publishing or tagging a release:
 
 ```sh
-pnpm typecheck
-pnpm test
-pnpm lint
+pnpm check
 pnpm build
 node dist/cli.js --help
 node dist/cli.js hello

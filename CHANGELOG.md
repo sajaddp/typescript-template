@@ -12,6 +12,7 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 - Added a complete developer workflow covering development, testing, linting, typechecking, building, and package inspection.
 - Rewrote the documentation in clear English with tutorial-style guidance and SEO-friendly headings.
 - Set the runtime baseline to Node.js 24+ and pnpm 11+ across code, docs, metadata, and tests.
+- Aligned package, CLI, changelog, and citation metadata on version 2.0.0.
 
 ### CLI Surface
 
@@ -52,8 +53,9 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 - Added `@clack/prompts` and `picocolors` for improved terminal presentation.
 - Added `vitest` for automated testing.
 - Added package metadata for ESM output, public exports, generated types, and the `ts-template` bin.
-- Added a focused script set for `dev`, `build`, `postbuild`, `typecheck`, `test`, `lint`, and `format`.
+- Added a focused script set for `dev`, `build`, `postbuild`, `typecheck`, `test`, `lint`, `format`, `format:check`, and `check`.
 - Added `scripts/mark-bin-executable.mjs` so the compiled CLI bin is executable after builds.
+- Downgraded `@types/node` to the Node.js 24 type line to match the runtime baseline.
 
 ### TypeScript and Build Output
 
@@ -68,7 +70,7 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 ### Documentation
 
 - Replaced `README.MD` with conventional `README.md`.
-- Updated `CITATION.cff` to match the new CLI starter identity, Node.js 24+ baseline, pnpm 11+ baseline, and 1.0.0 release date.
+- Updated `CITATION.cff` to match the new CLI starter identity, Node.js 24+ baseline, pnpm 11+ baseline, and 2.0.0 release date.
 - Added a practical README walkthrough for creating, registering, testing, and smoke-testing a new CLI command.
 - Rewrote the README as a complete tutorial covering:
   - project purpose
@@ -105,6 +107,9 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 
 - Added a root `AGENTS.md` guide for AI coding agents working on this repository.
 - Added a project-local Codex skill at `.codex/skills/work-on-typescript-cli-starter` to guide future agents working on this repository.
+- Added `.github/workflows/ci.yml` for GitHub Actions checks.
+- Added `.node-version` for local runtime managers and CI.
+- Added `.editorconfig` for consistent editor defaults.
 - Added `pnpm-workspace.yaml` with `allowBuilds.esbuild: true` so pnpm 11 installs do not fail on the trusted esbuild postinstall script.
 - Added `pnpm-lock.yaml` to version control for reproducible installs.
 - Removed `pnpm-lock.yaml` from `.gitignore`.
@@ -117,9 +122,7 @@ This update rewrites the project from a minimal TypeScript runtime example into 
 The implementation was verified with:
 
 ```sh
-pnpm lint
-pnpm typecheck
-pnpm test
+pnpm check
 pnpm build
 node dist/cli.js --help
 node dist/cli.js hello

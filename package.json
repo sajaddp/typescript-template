@@ -1,6 +1,6 @@
 {
   "name": "typescript-template",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A polished TypeScript CLI starter for Node.js 24+, pnpm 11+, Commander.js, typed env validation, and Vitest.",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,7 +28,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "format": "biome format --write .",
-    "lint": "biome check ."
+    "format:check": "biome format .",
+    "lint": "biome check .",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test"
   },
   "repository": {
     "type": "git",
@@ -79,7 +81,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
-    "@types/node": "^25.8.0",
+    "@types/node": "^24.12.4",
     "tsx": "^4.22.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.6"
