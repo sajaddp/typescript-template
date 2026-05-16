@@ -1,12 +1,37 @@
 {
   "name": "typescript-template",
   "version": "1.0.0",
-  "description": "A template project setup for TypeScript development.",
-  "main": "ts-node ./src/index.ts",
+  "description": "A polished TypeScript CLI starter for Node.js 24+, pnpm 11+, Commander.js, typed env validation, and Vitest.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "ts-template": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    ".env.example",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "dev": "ts-node ./src/index.ts",
+    "dev": "tsx src/cli.ts",
+    "build": "tsc",
+    "postbuild": "node scripts/mark-bin-executable.mjs",
+    "start": "node dist/cli.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "biome format --write .",
-    "lint": "biome check --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "lint:unsafe": "biome check --write --unsafe ."
   },
   "repository": {
@@ -15,37 +40,57 @@
   },
   "keywords": [
     "boilerplate",
+    "cli",
+    "commander",
+    "commander-js",
     "dotenv",
-    "node-22",
-    "node-typescript-starter",
     "node",
+    "node-24",
+    "node-cli",
+    "node-cli-template",
+    "node-typescript-starter",
     "nodejs",
     "pnpm",
+    "pnpm-11",
+    "pnpm-typescript-boilerplate",
     "project",
     "starter",
     "template",
-    "ts-node",
+    "tsx",
+    "typescript",
+    "typescript-cli-starter",
+    "typescript-cli-template",
     "typescript-starter",
     "typescript-template",
-    "typescript"
+    "vitest",
+    "zod"
   ],
-  "author": "Sajad DP",
+  "author": {
+    "name": "Sajad Dehshiri",
+    "url": "https://sajaddehshiri.ir/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sajaddp/typescript-template/issues"
   },
   "homepage": "https://github.com/sajaddp/typescript-template#readme",
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "@clack/prompts": "^0.11.0",
+    "commander": "^14.0.3",
+    "dotenv": "^17.4.2",
+    "picocolors": "^1.1.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
     "@types/node": "^25.8.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.3"
+    "tsx": "^4.22.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=10.0.0"
-  }
+    "node": ">=24.0.0",
+    "pnpm": ">=11.0.0"
+  },
+  "packageManager": "pnpm@11.1.2"
 }
