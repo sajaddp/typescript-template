@@ -25,14 +25,10 @@
     "dev": "tsx src/cli.ts",
     "build": "tsc",
     "postbuild": "node scripts/mark-bin-executable.mjs",
-    "start": "node dist/cli.js",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest",
     "format": "biome format --write .",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "lint:unsafe": "biome check --write --unsafe ."
+    "lint": "biome check ."
   },
   "repository": {
     "type": "git",
