@@ -39,3 +39,6 @@ jobs:
 
       - name: Smoke test compiled CLI
         run: pnpm smoke:dist
+
+      - name: Check npm package contents
+        run: pnpm pack:check
