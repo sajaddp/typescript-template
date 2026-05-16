@@ -31,6 +31,14 @@ This update prepares the package for secure npm publishing through GitHub Action
 - Updated `AGENTS.md` with publishing rules to prevent future token-based publishing regressions.
 - Kept package contents focused on generated `dist` files, public metadata, documentation, license text, changelog, and `.env.example`.
 
+### Developer Experience
+
+- Added `clean`, `dev:*`, `start`, `test:watch`, `typecheck:watch`, `fix`, `pack:check`, and `verify` scripts for faster local workflows.
+- Added a cross-platform clean script for generated build, coverage, and package tarball artifacts.
+- Added an automated npm package content check for package name, version, required files, forbidden local-only files, CLI shebang, and executable bin mode.
+- Added `CONTRIBUTING.md` and `docs/development.md` for contributor onboarding and local quality gates.
+- Updated CI to run the automated package content check after compiled CLI smoke tests.
+
 ## 2.0.0 - 2026-05-16
 
 This update rewrites the project from a minimal TypeScript runtime example into a polished Node.js CLI starter. The repository now presents a real `ts-template` command, a cleaner source architecture, typed environment validation, automated tests, production build output, and a comprehensive README designed for both developer onboarding and search visibility.
