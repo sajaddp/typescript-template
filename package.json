@@ -25,19 +25,31 @@
     "access": "public"
   },
   "scripts": {
+    "clean": "node scripts/clean.mjs",
     "dev": "tsx src/cli.ts",
+    "dev:doctor": "pnpm dev -- doctor",
+    "dev:env": "pnpm dev -- env",
+    "dev:hello": "pnpm dev -- hello Sajad",
+    "dev:help": "pnpm dev -- --help",
     "build": "tsc",
+    "prebuild": "pnpm clean",
     "postbuild": "node scripts/mark-bin-executable.mjs",
+    "start": "node dist/cli.js",
     "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
     "test": "vitest run",
+    "test:watch": "vitest",
     "format": "biome format --write .",
     "format:check": "biome format .",
+    "fix": "biome check --write .",
     "lint": "biome check .",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test",
     "smoke:dist": "node dist/cli.js --help && node dist/cli.js hello Sajad && node dist/cli.js env --json && node dist/cli.js doctor --json",
+    "pack:check": "node scripts/check-package.mjs",
     "pack:dry": "pnpm build && npm pack --dry-run",
+    "verify": "pnpm check && pnpm build && pnpm smoke:dist && pnpm pack:check",
     "prepack": "pnpm build",
-    "prepublishOnly": "pnpm check && pnpm build && pnpm smoke:dist"
+    "prepublishOnly": "pnpm verify"
   },
   "repository": {
     "type": "git",
