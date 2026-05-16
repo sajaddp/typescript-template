@@ -26,13 +26,12 @@ Run these commands before creating the GitHub Release:
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm check
-pnpm build
-pnpm smoke:dist
+pnpm verify
+pnpm pack:check
 npm pack --dry-run
 ```
 
-Review the dry-run package contents before publishing. The package should include the generated `dist` files, package metadata, README, changelog, license, and `.env.example`; it should not include local env files, source tests, CI files, coverage, `node_modules`, or lockfiles.
+Review the dry-run package contents before publishing. The automated package check verifies the package name, version, required public files, forbidden local-only files, CLI shebang, and executable bin mode. The package should include the generated `dist` files, package metadata, README, changelog, license, and `.env.example`; it should not include local env files, source tests, CI files, coverage, `node_modules`, or lockfiles.
 
 ## Release Trigger
 
