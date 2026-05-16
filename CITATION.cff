@@ -1,21 +1,27 @@
 cff-version: 1.2.0
-title: "TypeScript Template"
-message: "If you use this template, please cite it as below."
+title: "TypeScript CLI Starter"
+message: "If you use this TypeScript CLI starter, please cite it as below."
 type: software
 authors:
   - family-names: Dehshiri
     given-names: Sajad
 repository-code: "https://github.com/sajaddp/typescript-template"
-url: "https://sajaddp.github.io/typescript-template/"
+url: "https://github.com/sajaddp/typescript-template#readme"
 license: MIT
 version: "1.0.0"
 keywords:
   - typescript
+  - typescript-cli-starter
   - typescript-template
+  - cli
   - node
-  - node-22
+  - node-24
   - pnpm
-  - ts-node
+  - pnpm-11
+  - tsx
+  - commander
   - dotenv
+  - zod
+  - vitest
   - biome
-date-released: "2025-08-30"
+date-released: "2026-05-16"
